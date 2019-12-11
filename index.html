@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous">
+    </script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="node_modules/semantic-ui-calendar/dist/calendar.min.js"></script>
+    <link rel="stylesheet" href="node_modules/semantic-ui-calendar/dist/calendar.min.css"/>
+
+  </head>
+  <body>
+    <div class="ui container index">
+      <div class="ui pointing menu">
+         <ul>
+          <li><b>+</b><a href="form.html"><i>Upload your CV</i></a></li>
+      </ul>
+      </div>
+
+      <div class="mainButton">
+        <div class="ui massive buttons home">
+          <button class="ui button">Students</button>
+          <div class="or"></div>
+          <button class="ui positive button">Professors</button>
+        </div>
+      </div>
+      <div class="mainSearch">
+        <div class="ui huge search">
+          <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Search by person's name, skills, status...">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+      <div class="ui horizontal list">
+        <div class="item">
+          <img class="ui tiny avatar image" src="pics/student.png">
+          <div class="content">
+            <div class="header">Άγγελος Κουτάνης</div>
+            Προπτυχιακός
+          </div>
+        </div>
+        <div class="item">
+          <img class="ui tiny avatar image" src="pics/professor.png">
+          <div class="content">
+            <div class="header">Χρήστος Σκουρλάς</div>
+            Επίκουρος Καθητής
+          </div>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
