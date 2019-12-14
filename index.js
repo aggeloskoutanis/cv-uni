@@ -16,7 +16,7 @@ app.use(express.static(__dirname)); //Render the local HTML pages.
 //If user inputs http://localhost:3000 redirect him to index.html
 app.get('/', function (request, response) {
   var resultsArr = [];
-  mongodb.connect('mongodb://localhost:27017/cvDatabase', function (err, client) {
+  mongodb.connect('mongodb+srv://AggelosKoutanis:J9HzDqFjMDffI74d@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
     var cursor = db.collection('CV').find();
@@ -40,7 +40,7 @@ app.get('/form.html', function (request, response) {
 //When user clicks the submit button fecth the data from
 //the form and insert the in the database.
 app.post('/submit', function (request, response) {
-  mongodb.connect('mongodb://localhost:27017/cvDatabase', function (err, client) {
+  mongodb.connect('mongodb+srv://AggelosKoutanis:J9HzDqFjMDffI74d@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
     db.collection('CV').insertOne(request.body, function(err, result) {
