@@ -1,0 +1,24 @@
+doctype html
+html(lang='en', dir='ltr')
+  head
+    meta(charset='utf-8')
+    title Form submitted
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', type='text/css', href='semantic/dist/semantic.min.css')
+  body
+    div(align='center')
+      p#doneTXT Your CV was submitted succesfully
+      img#doneIMG(src='pics/done.png', alt='Done sign', width='400', height='400')
+    p#timer
+    div(align='center')
+      a(href='index.html') Click here if your browser does not redirect you automatically
+    script(type='text/javascript').
+      var t = 5;
+      var x = setInterval(function() {
+      console.log(t);
+      document.getElementById("timer").innerHTML = t;
+      if (--t < 0) {
+      clearInterval(x);
+      window.location.replace("/");
+      }
+      }, 1000);
