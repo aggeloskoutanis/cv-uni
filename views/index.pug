@@ -1,0 +1,47 @@
+doctype html
+html(lang='en', dir='ltr')
+  head
+    meta(charset='utf-8')
+    title Home
+    link(rel='stylesheet', type='text/css', href='semantic/dist/semantic.min.css')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js', integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous')
+    script(src='semantic/dist/semantic.min.js')
+    script(type='text/javascript', src='node_modules/semantic-ui-calendar/dist/calendar.min.js')
+    link(rel='stylesheet', href='node_modules/semantic-ui-calendar/dist/calendar.min.css')
+  body
+    .ui.container.index
+      .ui.pointing.menu
+        ul
+          li
+            b +
+            a(href='form.html')
+              i Upload your CV
+      .mainButton
+        .ui.massive.buttons.home
+          button.ui.button Students
+          .or
+          button.ui.positive.button Professors
+      .mainSearch
+        .ui.huge.search
+          .ui.icon.input
+            input.prompt(type='text', placeholder="Search by person's name, skills, status...")
+            i.search.icon
+          .results
+      .ui.hidden.divider
+      .ui.horizontal.list
+        .item
+          img.ui.tiny.avatar.image(src='pics/student.png')
+          .content
+            .header Άγγελος Κουτάνης
+            |             Προπτυχιακός
+        .item
+          img.ui.tiny.avatar.image(src='pics/professor.png')
+          .content
+            .header Χρήστος Σκουρλάς
+            |             Επίκουρος Καθητής
+    script(type='text/javascript').
+      function search() {
+        console.log("maybe working");
+        return true;
+      }
