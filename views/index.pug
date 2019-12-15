@@ -25,11 +25,16 @@ html(lang='en', dir='ltr')
       .mainSearch
         .ui.huge.search
           .ui.icon.input
-              input.prompt(type='text', placeholder="Search by person's name, skills, status...")
+              input.prompt(type='text', id="fname", onkeyup="search()", placeholder="Search by person's name, skills, status...")
               i.search.icon
           .results
       .ui.hidden.divider
       .ui.horizontal.list
+      table(id="myTable", style='width:100%', border='1')
+        each n in message
+          tr
+            th= n.firstName
+            th= n.lastName
         .item
           img.ui.tiny.avatar.image(src='pics/student.png')
           .content
@@ -40,8 +45,26 @@ html(lang='en', dir='ltr')
           .content
             .header Χρήστος Σκουρλάς
             |             Επίκουρος Καθητής
-    script(type='text/javascript').
-      function search() {
-      console.log("maybe working");
-      return true;
-      }
+      script.
+          function search() {
+            // Declare variables
+            var input, filter, table, tr, th, i, txtValue;
+            input = document.getElementById("fname");
+            table = document.getElementById("myTable");
+            tr = document.getElementsByTagName("tr");
+            filter = input.value.toUpperCase();
+            
+            for (i= 0; i < tr.length;i++){
+              th = tr[i].getElementsByTagName("th")[0];
+              if(th){
+                
+                txtValue = th.textContent || th.innerText;
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                  tr[i].style.display = "";
+                } else {
+                  
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }

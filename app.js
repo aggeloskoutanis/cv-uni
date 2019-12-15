@@ -13,18 +13,17 @@ const port = 3000;
 //Express is initiated
 let app = express();
 
+
 app.set("view engine", "pug");
 
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({extended: true})); //Encode special chars
-app.use(express.static(path.join(__dirname))); //Render the local HTML pages.
+app.use(express.static(__dirname)); //Render the local HTML pages.
 
 //If user inputs http://localhost:3000 redirect him to index.html
-app.get('/', function (request, response) {
-  return response.render('index');
-});
 
-app.post('/search', function (request, response) {
+
+app.get('/', function (request, response) {
   var resultsArr = [];
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
@@ -33,16 +32,16 @@ app.post('/search', function (request, response) {
     cursor.forEach(function (doc, err) {
       assert.equal(null, err);
       resultsArr.push(doc);
-      console.log(doc);
+      //console.log(doc);
     }, function() {
-      response.render('index.pug', {items: resultsArr});
+     return response.render('index', {message : resultsArr});
     });
   });
 });
 
 //If user inputs http://localhost:3000/form.html take him there
 app.get('/form.html', function (request, response) {
-  return response.render('form');
+  return response.render('form.pug');
 });
 
 //When user clicks the submit button fecth the data from
@@ -64,7 +63,7 @@ app.post('/submit', function (request, response) {
 //Gets the GET request and displays the submitResults.html page
 //(if success)
 app.get('/success', function (request, response) {
-  return response.render('submitResults');
+  response.render('submitResults.pug');
 });
 
 //Start the server and listen for requests
