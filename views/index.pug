@@ -25,23 +25,43 @@ html(lang='en', dir='ltr')
       .mainSearch
         .ui.huge.search
           .ui.icon.input
-            input.prompt(type='text', placeholder="Search by person's name, skills, status...")
-            i.search.icon
+              input.prompt(type='text', id="fname", onkeyup="search()", placeholder="Search by person's name, skills, status...")
+              i.search.icon
           .results
       .ui.hidden.divider
       .ui.horizontal.list
-        .item
-          img.ui.tiny.avatar.image(src='pics/student.png')
-          .content
-            .header Άγγελος Κουτάνης
-            |             Προπτυχιακός
-        .item
-          img.ui.tiny.avatar.image(src='pics/professor.png')
-          .content
-            .header Χρήστος Σκουρλάς
-            |             Επίκουρος Καθητής
-    script(type='text/javascript').
-      function search() {
-        console.log("maybe working");
-        return true;
-      }
+      table(id="myTable", style='width:100%', border='1')
+        each n in message
+          tr
+            th
+              .item
+                if n.academicStatus.includes("student") 
+                  img.ui.tiny.avatar.image(src='pics/student.png')
+                else
+                  img.ui.tiny.avatar.image(src='pics/professor.png')
+                .content
+                  .h1= n.firstName
+                  .h1= n.lastName 
+        script.
+          function search() {
+            // Declare variables
+            var input, filter, table, tr, th, i, txtValue;
+            input = document.getElementById("fname");
+            table = document.getElementById("myTable");
+            tr = document.getElementsByTagName("tr");
+            filter = input.value.toUpperCase();
+            
+            for (i= 0; i < tr.length;i++){
+              th = tr[i].getElementsByTagName("th")[0];
+              if(th){
+                
+                txtValue = th.textContent || th.innerText;
+                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                  tr[i].style.display = "";
+                } else {
+                  
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
