@@ -33,19 +33,16 @@ html(lang='en', dir='ltr')
       table(id="myTable", style='width:100%', border='1')
         each n in message
           tr
-            th= n.firstName
-            th= n.lastName
-        .item
-          img.ui.tiny.avatar.image(src='pics/student.png')
-          .content
-            .header Άγγελος Κουτάνης
-            |             Προπτυχιακός
-        .item
-          img.ui.tiny.avatar.image(src='pics/professor.png')
-          .content
-            .header Χρήστος Σκουρλάς
-            |             Επίκουρος Καθητής
-      script.
+            th
+              .item
+                if n.academicStatus.includes("student") 
+                  img.ui.tiny.avatar.image(src='pics/student.png')
+                else
+                  img.ui.tiny.avatar.image(src='pics/professor.png')
+                .content
+                  .h1= n.firstName
+                  .h1= n.lastName 
+        script.
           function search() {
             // Declare variables
             var input, filter, table, tr, th, i, txtValue;
