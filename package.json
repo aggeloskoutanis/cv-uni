@@ -1,0 +1,27 @@
+{
+  "name": "cv-uni",
+  "version": "1.0.0",
+  "description": "A CV online site with the ability to see and post cv's.",
+  "main": "app.js",
+  "scripts": {
+    "express": "npm install express",
+    "mongodb": "npm install mongodb",
+    "start": "npm install express && npm install mongodb && npm install pug",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariosKoni/cv-uni.git"
+  },
+  "author": "Aggelos Koutanis, Marios Konidaris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariosKoni/cv-uni/issues"
+  },
+  "homepage": "https://github.com/MariosKoni/cv-uni#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.4.0",
+    "pug": "^2.0.4"
+  }
+}
