@@ -6,7 +6,7 @@
   "scripts": {
     "express": "npm install express",
     "mongodb": "npm install mongodb",
-    "start": "npm install express && npm install mongodb && npm install pug",
+    "start": "npm install express && npm install mongodb && npm install pug && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
