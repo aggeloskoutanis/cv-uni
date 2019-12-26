@@ -19,7 +19,7 @@ What things you need to install the software and how to install them
 
 A step by step series of examples that tell you how to get a development environment running. Instructions are present at all links.
 
-First, install Node.js (v10.1.0 for now 18/12/2019)
+First, install Node.js
 
 ```
 https://nodejs.org/en/download/
