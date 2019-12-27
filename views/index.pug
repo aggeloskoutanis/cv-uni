@@ -51,12 +51,12 @@ html(lang='en', dir='ltr')
             tr = document.getElementsByTagName("tr");
             filter = input.value.toUpperCase();
             
-            for (i= 0; i < tr.length;i++){
+            for (i= 0; i < tr.length;i++) {
               th = tr[i].getElementsByTagName("th")[0];
-              if(th){
+              if(th) {
                 
                 txtValue = th.textContent || th.innerText;
-                if(txtValue.toUpperCase().indexOf(filter) > -1){
+                if(txtValue.toUpperCase().indexOf(filter) > -1) {
                   tr[i].style.display = "";
                 } else {
                   

@@ -67,4 +67,4 @@ app.get('/success', function (request, response) {
 });
 
 //Start the server and listen for requests
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(process.env.PORT || port, () => console.log(`App listening on port ${port}!`));

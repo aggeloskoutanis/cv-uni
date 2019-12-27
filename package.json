@@ -1,0 +1,29 @@
+{
+  "name": "cv-uni",
+  "version": "1.0.0",
+  "description": "A CV online site with the ability to see and post cv's.",
+  "main": "app.js",
+  "scripts": {
+    "calendar": "npm install --save semantic-ui-calendar",
+    "express": "npm install express",
+    "mongodb": "npm install mongodb",
+    "start": "npm install calendar && npm install express && npm install mongodb && npm install pug && node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariosKoni/cv-uni.git"
+  },
+  "author": "Aggelos Koutanis, Marios Konidaris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariosKoni/cv-uni/issues"
+  },
+  "homepage": "https://github.com/MariosKoni/cv-uni#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.4.1",
+    "pug": "^2.0.4",
+    "semantic-ui-calendar": "0.0.8"
+  }
+}
