@@ -30,8 +30,8 @@ app.get('/', function (request, response) {
     var db = client.db('cvDatabase');
     var cursor = db.collection('CV').find();
     cursor.forEach(function (doc, err) {
-      assert.equal(null, err);
-      resultsArr.push(doc);
+    assert.equal(null, err);
+    resultsArr.push(doc);
       //console.log(doc);
     }, function() {
      return response.render('index', {message : resultsArr});
@@ -44,6 +44,21 @@ app.get('/form.html', function (request, response) {
   return response.render('form.pug');
 });
 
+app.get('/dynamic.html', function (request, response) {
+  var resultsArr = [];
+  mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
+    assert.equal(null, err);
+    var db = client.db('cvDatabase');
+    var cursor = db.collection('CV').find({"firstName" : "Marios"});
+    cursor.forEach(function (doc, err) {
+    assert.equal(null, err);
+    resultsArr.push(doc);
+    console.log(doc);
+    }, function() {
+     return response.render('dynamic', {i : resultsArr.pop()});
+    });
+  });
+});
 //When user clicks the submit button fecth the data from
 //the form and insert the in the database.
 app.post('/submit', function (request, response) {

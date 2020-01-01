@@ -29,19 +29,19 @@ html(lang='en', dir='ltr')
               i.search.icon
           .results
       .ui.hidden.divider
-      .ui.horizontal.list
+      
       table(id="myTable", style='width:100%', border='1')
         each n in message
-          tr
+          tr          
             th
               .item
-                if n.academicStatus.includes("student") 
-                  img.ui.tiny.avatar.image(src='pics/student.png')
-                else
-                  img.ui.tiny.avatar.image(src='pics/professor.png')
                 .content
-                  .h1= n.firstName
-                  .h1= n.lastName 
+                if n.academicStatus.includes("student") 
+                  img.ui.tiny.avatar.image(src='pics/student.png', align="center")
+                else
+                  img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
+                h1(style="font-size:75%")=n.firstName
+                h1(style="font-size:75%")=n.lastName 
         script.
           function search() {
             // Declare variables
