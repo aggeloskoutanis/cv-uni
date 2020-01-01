@@ -104,3 +104,49 @@ li {
           max-width: 150px;
           transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color .2s;
       }
+    #wrapper {
+        border: 1px solid blue;
+        display:flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    #wrapper div > div{
+      overflow-wrap: break-word;
+      padding: 5px;
+    }
+    #personal_info {
+        display:flex;
+        border: 1px solid red;
+    }
+    div#personal_info span {
+      color: #008B8B;
+    }
+    #working_experience {
+        display:flex;
+        border: 1px solid yellow;
+    }
+    #work_date{
+      width: 50%;
+      border: 1px solid black;
+    }
+    #work_details{
+      width:50%;
+      border: 1px solid rgb(0, 204, 255);
+    }
+    #academic_experience{
+      border: 1px solid green;
+    }
+    #personal_skills{
+      border: 1px solid blue;
+    }
+    #additional_info{
+    border: 1px solid violet;
+    }
+    #pers_tags{
+      width:50%;
+      border: 1px solid green;
+    }
+    #pers_inf{
+      width:50%;
+      border: 1px solid rgb(238, 191, 130);
+    }

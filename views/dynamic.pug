@@ -1,0 +1,48 @@
+doctype html
+html(lang='en', dir='ltr')
+  head
+    meta(charset='utf-8')
+    title Home
+    link(rel='stylesheet', type='text/css', href='semantic/dist/semantic.min.css')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js', integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous')
+    script(src='semantic/dist/semantic.min.js')
+    script(type='text/javascript', src='node_modules/semantic-ui-calendar/dist/calendar.min.js')
+    link(rel='stylesheet', href='node_modules/semantic-ui-calendar/dist/calendar.min.css')
+  body
+    #wrapper
+      #personal_info 
+        #pers_tags
+          p(style="color:#008B8B") Personal Info
+        #pers_inf
+          p
+            i.user.icon
+            | #{i.firstName}
+            | #{i.lastName}
+          p 
+            i.mobile.alternate.icon
+            | #{i.phoneNumber}
+          p
+            i.at.icon
+            | #{i.email}
+          p
+            span Gender 
+            | #{i.gender}  | 
+            span Date of Birth 
+            |  #{i.dob} | 
+            span Nationality 
+            |  #{i.country[0].toUpperCase()} 
+
+      #working_experience
+        #work_date
+          p(style="color:#008B8B") Working Experience
+          p(style="color:#008B8B; font-size:90%; text-align:right") a date
+        #work_details
+          p dasdsad
+        
+      #academic_experience
+        p academic exp
+      #personal_skills
+        p personal skills
+      #additional_info
+        p additional info
