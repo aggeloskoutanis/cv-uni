@@ -34,15 +34,110 @@ html(lang='en', dir='ltr')
             |  #{i.country[0].toUpperCase()} 
 
       #working_experience
-        #work_date
+        #work_title
           p(style="color:#008B8B") Working Experience
-          p(style="color:#008B8B; font-size:90%; text-align:right") a date
-        #work_details
-          p dasdsad
-        
+        #work_container
+          if Array.isArray(i.educationStartDate)
+            - for(var n = 0; n < i.startWorkDate.length;n++)
+                div(class="work_details work-" + n)
+                  p
+                    b(style="color:#008B8B; font-size:90%;") #{i.startWorkDate[n]} - #{i.endWorkDate[n]}
+                  p
+                    b #{i.jobPos[n]}
+                  p 
+                    b Employee:  
+                    | #{i.emp[n]}
+                  p
+                    b Address:
+                    | #{i.address[n]}
+                  p
+                    b Duties:
+                    | #{i.duties[n]}
+          else 
+            #work_details
+                  p
+                    b(style="color:#008B8B; font-size:90%;") #{i.startWorkDate} - #{i.endWorkDate}
+                  p
+                    b #{i.jobPos}
+                  p 
+                    b Employee:  
+                    | #{i.emp}
+                  p
+                    b Address:
+                    | #{i.address}
+                  p
+                    b Duties:
+                    | #{i.duties}     
       #academic_experience
-        p academic exp
+        #academic_title
+          p(style="color:#008B8B") Academic experience
+        #academic_container
+          if Array.isArray(i.educationStartDate)
+            - for(var m = 0; m < i.educationStartDate.length;m++)
+                div(class="academic_details academic-" + m)
+                  p
+                    b(style="color:#008B8B; font-size:90%;") #{i.educationStartDate[m]} - #{i.educationalEndDate[m]}
+                  p
+                    b #{i.degree[m]}
+                  p 
+                    b University:  
+                    | #{i.university[m]}
+                  p
+                    b City:
+                    | #{i.city[m]}
+                  p
+                    b Majors:
+                    | #{i.majors}
+          else
+            #academic_details
+              p 
+                b(style="color:#008B8B; font-size:90%;") #{i.educationStartDate} - #{i.educationalEndDate}
+              p
+                b #{i.degree}
+              p 
+                b University:  
+                | #{i.university}
+              p
+                b City:
+                | #{i.city}
+              p
+                b Majors:
+                | #{i.majors}
+                  
       #personal_skills
-        p personal skills
+        #personal_skills_title
+          p(style="color:#008B8B") Personal skills
+        #personal_skills_container
+          if Array.isArray(i.language)
+            - for(var m = 0; m < i.language.length;m++)
+                div(class="languages language-" + m)
+                  p
+                    b Language:
+                    | #{i.language[m]}
+                  p
+                    b Level: 
+                    | #{i.pickLevel[m]}
+          else
+            #languages
+              p
+                  b Language:
+                  | #{i.language}
+              p
+                b Level: 
+                | #{i.pickLevel}
+          if Array.isArray(i.commSkills)
+            - for(var m = 0; m < i.language.length;m++)
+                div(class="communicationSkills skills-" + m)
+                  p
+                    b(style="color:#008B8B; font-size:90%;") Communication Skill
+                  p
+                    b #{i.commSkills[m]}
+          else
+            if i.commSkills.length > 0
+              #communicationSkills
+                p
+                  b(style="color:#008B8B; font-size:90%;") Communication Skill
+                p
+                  b #{i.commSkills}
       #additional_info
-        p additional info
+        p(style="color:#008B8B") Additional info
