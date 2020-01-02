@@ -37,7 +37,7 @@ html(lang='en', dir='ltr')
         #work_title
           p(style="color:#008B8B") Working Experience
         #work_container
-          if Array.isArray(i.educationStartDate)
+          if Array.isArray(i.jobPos)
             - for(var n = 0; n < i.startWorkDate.length;n++)
                 div(class="work_details work-" + n)
                   p
@@ -126,18 +126,61 @@ html(lang='en', dir='ltr')
                 b Level: 
                 | #{i.pickLevel}
           if Array.isArray(i.commSkills)
-            - for(var m = 0; m < i.language.length;m++)
+            b(style="color:#008B8B; font-size:90%;") Communication Skill
+              - for(var m = 0; m < i.language.length;m++)
                 div(class="communicationSkills skills-" + m)
-                  p
-                    b(style="color:#008B8B; font-size:90%;") Communication Skill
                   p
                     b #{i.commSkills[m]}
           else
             if i.commSkills.length > 0
               #communicationSkills
-                p
-                  b(style="color:#008B8B; font-size:90%;") Communication Skill
+                b(style="color:#008B8B; font-size:90%;") Communication Skill
                 p
                   b #{i.commSkills}
       #additional_info
-        p(style="color:#008B8B") Additional info
+        #additional_info_title
+          p(style="color:#008B8B") Additional info
+        #additional_info_container
+          #computerSkills
+            b(style="color:#008B8B; font-size:90%;") Computer Skills
+              if Array.isArray(i.compSkills)
+                - for(var m = 0; m < i.compSkills.length;m++)
+                  #compSkills
+                    p #{i.compSkills[m]}
+              else
+                #compSkills
+                  p #{i.compSkills}
+          #organisationSkills
+            b(style="color:#008B8B; font-size:90%;") Organization Skills
+              if Array.isArray(i.orgSkills)
+                #orgSkills
+                  - for(var m = 0; m < i.orgSkills.length;m++)
+                      p #{i.orgSkills[m]}
+              else
+                #orgSkills
+                  p #{i.orgSkills}
+          #otherSkills
+            b(style="color:#008B8B; font-size:90%;") Other Skills
+              if Array.isArray(i.otherSkills)
+                #oSkills
+                  - for(var m = 0; m < i.otherSkills.length;m++)
+                      p #{i.otherSkills[m]}
+              else
+                #oSkills
+                  p #{i.otherSkills}
+          #drivingLicense
+            b(style="color:#008B8B; font-size:90%;") Driving License
+              if Array.isArray(i.drivingLicense)
+                #dSkills
+                  - for(var m = 0; m < i.drivingLicense.length;m++)
+                      p #{i.drivingLicense[m]}
+              else
+                #dSkills
+                  p #{i.drivingLicense}
+          
+          #add_info
+            #add_info_title
+              b(style="color:#008B8B; font-size:90%;") Additional Info
+            #add_info_paragraph
+              | #{i.additionalInfo}
+

@@ -904,34 +904,26 @@ html
               label Communication skills
               #comm_field
                 textarea(name='commSkills', rows='2')
-            button#comm_btn.circular.ui.icon.button(type='button')
-              i.plus.circle.icon
             b Click to add more communication skills
             .ui.hidden.divider
             #org_skills.field
               label Organisational / managerial skills
               textarea#org_textarea(name='orgSkills', rows='2')
-            button#org_btn.circular.ui.icon.button(type='button')
-              i.plus.circle.icon
             b Click to add more organisational / managerial skills
             .ui.hidden.divider
             #comp_skills.field
               label Computer skills
               textarea#comp_textarea(name='compSkills', rows='2')
-            button#comp_btn.circular.ui.icon.button(type='button')
-              i.plus.circle.icon
             b Click to add more computer skills
             .ui.hidden.divider
             #other_skills.field
               label Other skills
               textarea#other_textarea(name='otherSkills', rows='2')
-            button#other_btn.circular.ui.icon.button(type='button')
-              i.plus.circle.icon
             b Click to add more "other skills"
             .ui.hidden.divider
             .field
               label Driving License
-              select.ui.fluid.dropdown(name='drivingLicense', multiple='')
+              select.ui.search.fluid.dropdown(name='drivingLicense', multiple='')
                 option(value='') Driving Licenses
                 option(value='alpha') A
                 option(value='alpha1') A1
@@ -1001,10 +993,10 @@ html
       $('.ui.calendar').each(function(){
       $(this).calendar();
       });
-     // $('.ui.selection.dropdown').dropdown();
+      //$('.ui.selection.dropdown').dropdown();
       //Tags
       $('.ui.search.fluid.dropdown').dropdown({
-      allowAdditions: true,
+        allowAdditions: true,
       });
       $("#work_btn").click(function(){
       $("#work_form").clone().appendTo("#main_work_form");
