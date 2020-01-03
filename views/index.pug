@@ -19,9 +19,9 @@ html(lang='en', dir='ltr')
               i Upload your CV
       .mainButton
         .ui.massive.buttons.home
-          button.ui.button Students
+          button.ui.button(type='button', name='sortByStudents' onclick="sortByStudents()") Students
           .or
-          button.ui.positive.button Professors
+          button.ui.positive.button(type='button', name='sortByProfessors' onclick="sortByProfessors()") Professors
       .mainSearch
         .ui.huge.search
           .ui.icon.input
@@ -30,19 +30,51 @@ html(lang='en', dir='ltr')
           .results
       .ui.hidden.divider
       
-      table(id="myTable", style='width:100%', border='1')
-        each n in message
-          tr          
-            th
-              .item
-                .content
-                if n.academicStatus.includes("student") 
-                  img.ui.tiny.avatar.image(src='pics/student.png', align="center")
-                else
-                  img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
-                h1(style="font-size:75%")=n.firstName
-                h1(style="font-size:75%")=n.lastName 
-        script.
+      form(name='CVPicker' action='/dynamic' method='post' target="_blank")
+        table(id="myTable", style='width:100%', border='1')
+          each n in message
+            tr          
+              th
+                .item
+                  .content
+                  if n.academicStatus.includes("student") 
+                    img.ui.tiny.avatar.image(src='pics/student.png', align="center")
+                  else
+                    img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
+                  h1(style="font-size:75%")= n.firstName
+                  h1(style="font-size:75%")= n.lastName
+                  h1#status(style="font-size:75%")= n.academicStatus
+                  input(type='submit' value='View CV') 
+        script(type='text/javascript').
+          
+          //This function is triggered when the students button is clicked
+          //and sorts the list so only studens are visible
+          function sortByStudents() {
+            table = document.getElementById("myTable");
+            tr = document.getElementsByTagName("tr");
+            
+            for (var i = 0; i < tr.length; ++i) {
+              th = tr[i].getElementsByTagName("th")[0];
+              txtValue = th.textContent || th.innerText;
+              if (txtValue.includes("professor"))
+                tr[i].style.display = "none";
+            }
+          }
+          
+          //This function is triggered when the professors button is clicked
+          //and sorts the list so only professors are visible
+          function sortByProfessors() {
+            table = document.getElementById("myTable");
+            tr = document.getElementsByTagName("tr");
+            
+            for (var i = 0; i < tr.length; ++i) {
+              th = tr[i].getElementsByTagName("th")[0];
+              txtValue = th.textContent || th.innerText;
+              if (txtValue.includes("student"))
+                tr[i].style.display = "none";
+            }
+          }
+          
           function search() {
             // Declare variables
             var input, filter, table, tr, th, i, txtValue;

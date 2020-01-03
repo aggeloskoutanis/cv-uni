@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/MariosKoni/cv-uni#readme",
   "dependencies": {
+    "calendar": "^0.1.1",
     "express": "^4.17.1",
     "mongodb": "^3.4.1",
     "pug": "^2.0.4",
