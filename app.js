@@ -49,7 +49,7 @@ app.get('/dynamic.html', function (request, response) {
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
-    var cursor = db.collection('CV').find({"firstName" : "Marios"});
+    var cursor = db.collection('CV').find({"firstName" : "Aggelos"});
     cursor.forEach(function (doc, err) {
     assert.equal(null, err);
     resultsArr.push(doc);

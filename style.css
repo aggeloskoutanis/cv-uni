@@ -125,22 +125,97 @@ li {
         display:flex;
         border: 1px solid yellow;
     }
-    #work_date{
+    #work_title{
       width: 50%;
       border: 1px solid black;
     }
-    #work_details{
-      width:50%;
+    #personal_skills_title{
+      width: 50%;
+      border: 1px solid black;
+    }
+    #academic_title{
+      width: 50%;
+      border: 1px solid black;
+    }
+    #additional_info_title{
+      width: 50%;
+      border: 1px solid black;
+    }
+    .work_details{
       border: 1px solid rgb(0, 204, 255);
     }
+    .languages{
+      border: 1px solid rgb(0, 204, 255);
+    }
+    .academic_details{
+      border: 1px solid blue;
+    }
+    #computerSkills{
+      border: 1px solid blue;
+    }
+    #organisationSkills{
+      border: 1px solid gray;
+    }
+    #otherSkills{
+      border: 1px solid green;
+    }
+    #orgSkills{
+      color: black;
+      border: 1px solid red;
+    }
+    #drivingLicense{
+      color: black;
+      border: 1px solid red;
+    }
+    #oSkills{
+      color: black;
+      border: 1px solid red;
+    }
+    #dSkills{
+      color: black;
+      border: 1px solid rgb(255, 0, 119);
+    }
+    #additional_info{
+      border: 1px solid rgb(0, 204, 255);
+    }
+    #compSkills{
+      color: black;
+      border: 1px solid rgb(255, 187, 0);
+    }
+    #communicationSkills{
+      border: 1px solid yellow;
+    }
     #academic_experience{
+      display:flex;
+      border: 1px solid green;
+    }
+    #personal_skills_container{
+      display:flex;
+      flex-direction: column;
+      border: 1px solid green;
+    }
+    #additional_info_container{
+      display:flex;
+      flex-direction: column;
+      border: 1px solid green;
+    }
+    #work_container{
+      display:flex;
+      flex-direction: column;
+      border: 1px solid green;
+    }
+    #academic_container{
+      display:flex;
+      flex-direction: column;
       border: 1px solid green;
     }
     #personal_skills{
+      display:flex;
       border: 1px solid blue;
     }
     #additional_info{
-    border: 1px solid violet;
+      display:flex;
+      border: 1px solid violet;
     }
     #pers_tags{
       width:50%;
@@ -150,3 +225,8 @@ li {
       width:50%;
       border: 1px solid rgb(238, 191, 130);
     }
+    #additional_info_title{
+      width:50%;
+      border: 1px solid rgb(238, 191, 130);
+    }
+    
