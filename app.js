@@ -13,14 +13,16 @@ const port = 3000;
 //Express is initiated
 let app = express();
 
-//Use pug instead of plain HTML as the render engine
+
 app.set("view engine", "pug");
 
-app.set("views", path.join(__dirname, "views")); //Let node.js know where the pug pages are
+app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({extended: true})); //Encode special chars
 app.use(express.static(__dirname)); //Render the local HTML pages.
 
-//If user inputs http://localhost:3000 redirect him to index.html and load all users of the DB
+//If user inputs http://localhost:3000 redirect him to index.html
+
+
 app.get('/', function (request, response) {
   var resultsArr = [];
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
@@ -28,8 +30,9 @@ app.get('/', function (request, response) {
     var db = client.db('cvDatabase');
     var cursor = db.collection('CV').find();
     cursor.forEach(function (doc, err) {
-      assert.equal(null, err);
-      resultsArr.push(doc);
+    assert.equal(null, err);
+    resultsArr.push(doc);
+      //console.log(doc);
     }, function() {
      return response.render('index', {message : resultsArr});
     });
@@ -41,23 +44,30 @@ app.get('/form.html', function (request, response) {
   return response.render('form.pug');
 });
 
-app.post('/dynamic', function (request, response) {
+var userResult
+app.post('/dynamic', (req, res) => {
+  userResult = req.body;
+  res.redirect('/dynamic');
+});
+
+
+app.get('/dynamic', function (request, response) {
   var resultsArr = [];
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
-    var cursor = db.collection('CV').find({"firstName" : "Aggelos"});
+    var cursor = db.collection('CV').find({"firstName" : userResult.firstName});
     cursor.forEach(function (doc, err) {
-      assert.equal(null, err);
-      resultsArr.push(doc);
-      console.log(doc);
+    assert.equal(null, err);
+    resultsArr.push(doc);
+    //console.log(doc);
     }, function() {
      return response.render('dynamic', {i : resultsArr.pop()});
     });
   });
 });
 
-//When user clicks the submit button in the form.html fecth the data from
+//When user clicks the submit button fecth the data from
 //the form and insert the in the database.
 app.post('/submit', function (request, response) {
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
