@@ -30,9 +30,10 @@ html(lang='en', dir='ltr')
           .results
       .ui.hidden.divider
       
-      form(name='CVPicker' action='/dynamic' method='post' target="_blank")
+      - var count=0;
+      each n in message
         table(id="myTable", style='width:100%', border='1')
-          each n in message
+          form(name='CVPicker' action='/dynamic' method='post' target="_blank")
             tr          
               th
                 .item
@@ -41,9 +42,12 @@ html(lang='en', dir='ltr')
                     img.ui.tiny.avatar.image(src='pics/student.png', align="center")
                   else
                     img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
-                  h1(style="font-size:75%")= n.firstName
-                  h1(style="font-size:75%")= n.lastName
-                  h1#status(style="font-size:75%")= n.academicStatus
+                  label(style="font-size:75%")= n.firstName
+                  input(type="hidden" name="firstName" value=n.firstName)
+                  label(style="font-size:75%")= n.lastName
+                  label#status(style="font-size:75%")= n.academicStatus
+                  input(type="hidden" name="lastName" value=n.lastName)
+                  - count = count + 1;
                   input(type='submit' value='View CV') 
         script(type='text/javascript').
           
