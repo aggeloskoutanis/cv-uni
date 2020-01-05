@@ -47,23 +47,22 @@ app.get('/form.html', function (request, response) {
   return response.render('form.pug');
 });
 
-var userResult;
-app.post('/dynamic', (req, res) => {
-  userResult = req.body;
-  res.redirect('/dynamic');
-});
 
-
-app.get('/dynamic', function (request, response) {
+app.post('/dynamic', function (request, response) {
   var resultsArr = [];
+  var mongo = require('mongodb');
+  
+  console.log(request.body);
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
-    var cursor = db.collection('CV').find({"firstName" : userResult.firstName});
+    var result = request.body;
+    var o_id = new mongo.ObjectID(result._id);
+    var cursor = db.collection('CV').find({"_id" : o_id});
     cursor.forEach(function (doc, err) {
     assert.equal(null, err);
     resultsArr.push(doc);
-    //console.log(doc);
+    console.log(doc);
     }, function() {
      return response.render('dynamic', {i : resultsArr.pop()});
     });
