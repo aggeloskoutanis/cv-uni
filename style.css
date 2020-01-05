@@ -1,3 +1,7 @@
+p:last-child{
+  margin: 0 0 1em;
+}
+
 .ui.positive.button{
   background-color: #b0d2d9;
 }
@@ -26,30 +30,8 @@
 }
 
 .ui.icon.input {
-  width: 80%;!important
-  max-width: 300em;!important
-}
-
-#myTable {
-  border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
-}
-
-#myTable th, #myTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
-}
-
-#myTable tr {
-  /* Add a bottom border to all table rows */
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover {
-  /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
+  width: 80%;
+  max-width: 300em;
 }
 
 
@@ -64,6 +46,15 @@
 
 body {
   font:1em/1.4 sans-serif;
+}
+li {
+  overflow: hidden;
+  background: #E7EBE0FF;
+  list-style: none;
+  white-space:nowrap;
+  margin-right: 10px;
+  -radius: 25px;
+  display: inline-block;
 }
 li {
   overflow: hidden;
@@ -98,136 +89,125 @@ li {
       display: inline-block;
       padding:.125em .375em;
   }
-  li:hover {}
+
       li:hover a {
           opacity: 1;
           max-width: 150px;
           transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color .2s;
       }
     #wrapper {
-        border: 1px solid blue;
-        display:flex;
-        width: 100%;
-        flex-direction: column;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      display:flex;
+      flex-direction: column;
+      border-radius: 5px;
     }
     #wrapper div > div{
       overflow-wrap: break-word;
-      padding: 5px;
     }
     #personal_info {
         display:flex;
-        border: 1px solid red;
+        margin: 0px 15px;    
+        padding-top: 10px;
     }
     div#personal_info span {
       color: #008B8B;
     }
     #working_experience {
         display:flex;
-        border: 1px solid yellow;
+        margin: 0px 15px;
+        padding-top: 10px;
     }
     #work_title{
-      width: 50%;
-      border: 1px solid black;
+      border-top: 2px solid #008b8b;
+      width: 48%;
+      font-weight: 600;
+      border-radius: 3px 2px;
+      margin-right: auto;
     }
     #personal_skills_title{
-      width: 50%;
-      border: 1px solid black;
+      border-top: 2px solid #008b8b;
+      width: 48%;
+      font-weight: 600;
+      border-radius: 3px 2px;
+      margin-right: auto;
     }
     #academic_title{
-      width: 50%;
-      border: 1px solid black;
+      border-top: 2px solid #008b8b;
+      width: 48%;
+      font-weight: 600;
+      border-radius: 3px 2px;
+      margin-right: auto;
     }
     #additional_info_title{
-      width: 50%;
-      border: 1px solid black;
+      border-top: 2px solid #008b8b;
+      width: 48%;
+      font-weight: 600;
+      border-radius: 3px 2px;
+      margin-right: auto;
     }
-    .work_details{
-      border: 1px solid rgb(0, 204, 255);
-    }
-    .languages{
-      border: 1px solid rgb(0, 204, 255);
-    }
-    .academic_details{
-      border: 1px solid blue;
-    }
-    #computerSkills{
-      border: 1px solid blue;
-    }
-    #organisationSkills{
-      border: 1px solid gray;
-    }
-    #otherSkills{
-      border: 1px solid green;
-    }
+    
     #orgSkills{
       color: black;
-      border: 1px solid red;
     }
     #drivingLicense{
       color: black;
-      border: 1px solid red;
     }
     #oSkills{
       color: black;
-      border: 1px solid red;
     }
     #dSkills{
       color: black;
-      border: 1px solid rgb(255, 0, 119);
     }
     #additional_info{
-      border: 1px solid rgb(0, 204, 255);
+      margin: 0px 15px;
     }
     #compSkills{
       color: black;
-      border: 1px solid rgb(255, 187, 0);
-    }
-    #communicationSkills{
-      border: 1px solid yellow;
     }
     #academic_experience{
+      padding-top: 10px;
       display:flex;
-      border: 1px solid green;
+      margin: 0px 15px;
     }
     #personal_skills_container{
+      width: 50%;
       display:flex;
       flex-direction: column;
-      border: 1px solid green;
     }
     #additional_info_container{
+      width: 50%;
       display:flex;
       flex-direction: column;
-      border: 1px solid green;
     }
     #work_container{
+      width: 50%;
       display:flex;
       flex-direction: column;
-      border: 1px solid green;
     }
     #academic_container{
+      width: 50%;
       display:flex;
       flex-direction: column;
-      border: 1px solid green;
     }
     #personal_skills{
+      padding-top: 10px;
       display:flex;
-      border: 1px solid blue;
+      margin: 0px 15px;
     }
     #additional_info{
+      padding-top: 10px;
       display:flex;
-      border: 1px solid violet;
     }
     #pers_tags{
-      width:50%;
-      border: 1px solid green;
+      border-top: 2px solid #008b8b;
+      width: 48%;
+      font-weight: 600;
+      border-radius: 3px 2px;
+      margin-right: auto;
     }
     #pers_inf{
       width:50%;
-      border: 1px solid rgb(238, 191, 130);
-    }
-    #additional_info_title{
-      width:50%;
-      border: 1px solid rgb(238, 191, 130);
     }
     .UserCVContainer{
       display: flex;
@@ -245,7 +225,7 @@ li {
     }
     .myDiv:hover{
       background-color: rgba(171, 214, 223, 1);
-      border-radius: 10px;
+      -radius: 10px;
     }
     .itemBox{
       display: flex;

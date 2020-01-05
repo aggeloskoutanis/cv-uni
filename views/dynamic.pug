@@ -10,7 +10,15 @@ html(lang='en', dir='ltr')
     script(type='text/javascript', src='node_modules/semantic-ui-calendar/dist/calendar.min.js')
     link(rel='stylesheet', href='node_modules/semantic-ui-calendar/dist/calendar.min.css')
   body
-    #wrapper
+    #wrapper.ui.container.index
+      .ui.pointing.menu
+        ul
+          li
+            .item
+              .ui.icon.main
+                i.home.link.icon
+              a(href='/')
+                i Search CV
       #personal_info 
         #pers_tags
           p(style="color:#008B8B") Personal Info
@@ -155,7 +163,7 @@ html(lang='en', dir='ltr')
               if Array.isArray(i.orgSkills)
                 #orgSkills
                   - for(var m = 0; m < i.orgSkills.length;m++)
-                      p #{i.orgSkills[m]}
+                    p #{i.orgSkills[m]}
               else
                 #orgSkills
                   p #{i.orgSkills}
@@ -164,7 +172,7 @@ html(lang='en', dir='ltr')
               if Array.isArray(i.otherSkills)
                 #oSkills
                   - for(var m = 0; m < i.otherSkills.length;m++)
-                      p #{i.otherSkills[m]}
+                    p #{i.otherSkills[m]}
               else
                 #oSkills
                   p #{i.otherSkills}
