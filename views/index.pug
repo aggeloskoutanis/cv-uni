@@ -52,13 +52,22 @@ html(lang='en', dir='ltr')
         script(type='text/javascript').
           
           var wasSorted = false; //Checks whether the two sorting buttons have been tapped
+          var tappedStudents = 0;
+          var tappedProfessors = 0;
           
           //This function is triggered when the students button is clicked
           //and sorts the list so only studens are visible
           function sortByStudents() {
-            //If the list has been already sorted reset it so it displays properly
-            if (wasSorted)
+            if(++tappedStudents == 2) {
               resetList();
+              tappedStudents = 0;
+              return;
+            }
+            //If the list has been already sorted reset it so it displays properly
+            if (wasSorted) {
+              resetList();
+              wasSorted = false;
+            }
             wasSorted = true;
             var div = document.querySelectorAll(".myDiv");
             var ac = document.getElementsByName("acad");
@@ -73,9 +82,16 @@ html(lang='en', dir='ltr')
           //This function is triggered when the professors button is clicked
           //and sorts the list so only professors are visible
           function sortByProfessors() {
-            //If the list has been already sorted reset it so it displays properly
-            if (wasSorted)
+            if(++tappedProfessors == 2) {
               resetList();
+              tappedProfessors = 0;
+              return;
+            }
+            //If the list has been already sorted reset it so it displays properly
+            if (wasSorted) {
+              resetList();
+              wasSorted = false;
+            }
             wasSorted = true;
             var div = document.querySelectorAll(".myDiv");
             var ac = document.getElementsByName("acad");
@@ -94,8 +110,6 @@ html(lang='en', dir='ltr')
             
             for (var i = 0; i < div.length; ++i)
               div[i].style.display = "";
-            
-            wasSorted = false;
           }
           
           function submit(count){

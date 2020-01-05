@@ -21,8 +21,6 @@ app.use(bodyParser.urlencoded({extended: true})); //Encode special chars
 app.use(express.static(__dirname)); //Render the local HTML pages.
 
 //If user inputs http://localhost:3000 redirect him to index.html
-
-
 app.get('/', function (request, response) {
   var resultsArr = [];
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
@@ -37,9 +35,6 @@ app.get('/', function (request, response) {
     });
   });
 });
-
-
-
 
 //If user inputs http://localhost:3000/form.html take him there
 app.get('/form.html', function (request, response) {
@@ -57,7 +52,7 @@ app.post('/dynamic', function (request, response) {
     var result = request.body;
     var o_id = new mongo.ObjectID(result._id);
     var cursor = db.collection('CV').find({"_id" : o_id});
-      cursor.forEach(function (doc, err) {
+    cursor.forEach(function (doc, err) {
       assert.equal(null, err);
       resultsArr.push(doc);
     }, function() {
