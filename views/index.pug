@@ -29,26 +29,25 @@ html(lang='en', dir='ltr')
               i.search.icon
           .results
       .ui.hidden.divider
-      
-      - var count=0;
-      each n in message
-        table(id="myTable", style='width:100%', border='1')
-          form(name='CVPicker' action='/dynamic' method='post' target="_blank")
-            tr          
-              th
-                .item
-                  .content
-                  if n.academicStatus.includes("student") 
-                    img.ui.tiny.avatar.image(src='pics/student.png', align="center")
-                  else
-                    img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
+      div(class="UserCVContainer")
+        - var count = 0;
+        each n in message
+          div(class="myDiv")
+            form(class="itemBox" name='CVPicker' action='/dynamic' id="form_id_" + count onclick="submit(event.target.getAttribute('id'))" method='post' target="_blank")
+              .item
+                .content
+                if n.academicStatus.includes("student") 
+                  img.ui.tiny.avatar.image(src='pics/student.png', align="center")
+                else
+                  img.ui.tiny.avatar.image(src='pics/professor.png', align="center")
+              div
+                div
                   label(style="font-size:75%")= n.firstName
                   input(type="hidden" name="firstName" value=n.firstName)
                   label(style="font-size:75%")= n.lastName
+                div
                   label#status(style="font-size:75%")= n.academicStatus
-                  input(type="hidden" name="lastName" value=n.lastName)
                   - count = count + 1;
-                  input(type='submit' value='View CV') 
         script(type='text/javascript').
           
           //This function is triggered when the students button is clicked
@@ -78,26 +77,45 @@ html(lang='en', dir='ltr')
                 tr[i].style.display = "none";
             }
           }
-          
+          function submit(count){
+            document.getElementById(count).submit();
+          }
           function search() {
             // Declare variables
-            var input, filter, table, tr, th, i, txtValue;
+            var input, div, filter, i, txtValue, name;
             input = document.getElementById("fname");
-            table = document.getElementById("myTable");
-            tr = document.getElementsByTagName("tr");
+            div = document.querySelectorAll(".myDiv");
             filter = input.value.toUpperCase();
-            
-            for (i= 0; i < tr.length;i++) {
-              th = tr[i].getElementsByTagName("th")[0];
-              if(th) {
-                
-                txtValue = th.textContent || th.innerText;
-                if(txtValue.toUpperCase().indexOf(filter) > -1) {
-                  tr[i].style.display = "";
-                } else {
-                  
-                  tr[i].style.display = "none";
-                }
+            name = document.getElementsByName("firstName");
+            console.log(div.length);
+            console.log(filter);
+            for(var i = 0; i < div.length; i++){
+              if(name[i].value.toUpperCase().indexOf(filter) > -1){
+                div[i].style.display="";
+              }
+              else{
+                div[i].style.display="none";
               }
             }
+       
+
+            //console.log(name[0].value);
+            //- div.forEach(function(item){
+            //-   if(item){
+
+
+            //-   }
+            //- })
+
+            //- for (i= 0; i < tr.length;i++) {
+            //-   th = tr[i].getElementsByTagName("th")[0];
+            //-   if(th) {
+                
+            //-     txtValue = th.textContent || th.innerText;
+            //-     if(txtValue.toUpperCase().indexOf(filter) > -1) {
+            //-       tr[i].style.display = "";
+            //-     } else {
+                  
+            //-       tr[i].style.display = "none";
           }
+          

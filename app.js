@@ -39,12 +39,15 @@ app.get('/', function (request, response) {
   });
 });
 
+
+
+
 //If user inputs http://localhost:3000/form.html take him there
 app.get('/form.html', function (request, response) {
   return response.render('form.pug');
 });
 
-var userResult
+var userResult;
 app.post('/dynamic', (req, res) => {
   userResult = req.body;
   res.redirect('/dynamic');

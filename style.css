@@ -229,4 +229,25 @@ li {
       width:50%;
       border: 1px solid rgb(238, 191, 130);
     }
-    
+    .UserCVContainer{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 5px;
+    }
+    .myDiv{
+      width: 24%;
+      padding: 10px;
+      margin: 5px 0px;
+    }
+    .myDiv label{
+      padding: 0 3px;
+    }
+    .myDiv:hover{
+      background-color: rgba(171, 214, 223, 1);
+      border-radius: 10px;
+    }
+    .itemBox{
+      display: flex;
+      align-items: center;
+    }
