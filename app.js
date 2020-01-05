@@ -30,9 +30,8 @@ app.get('/', function (request, response) {
     var db = client.db('cvDatabase');
     var cursor = db.collection('CV').find();
     cursor.forEach(function (doc, err) {
-    assert.equal(null, err);
-    resultsArr.push(doc);
-      //console.log(doc);
+      assert.equal(null, err);
+      resultsArr.push(doc);
     }, function() {
      return response.render('index', {message : resultsArr});
     });
@@ -51,18 +50,16 @@ app.get('/form.html', function (request, response) {
 app.post('/dynamic', function (request, response) {
   var resultsArr = [];
   var mongo = require('mongodb');
-  
-  console.log(request.body);
+
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
     var db = client.db('cvDatabase');
     var result = request.body;
     var o_id = new mongo.ObjectID(result._id);
     var cursor = db.collection('CV').find({"_id" : o_id});
-    cursor.forEach(function (doc, err) {
-    assert.equal(null, err);
-    resultsArr.push(doc);
-    console.log(doc);
+      cursor.forEach(function (doc, err) {
+      assert.equal(null, err);
+      resultsArr.push(doc);
     }, function() {
      return response.render('dynamic', {i : resultsArr.pop()});
     });

@@ -44,51 +44,71 @@ html(lang='en', dir='ltr')
                 div
                   label(style="font-size:75%")= n.firstName
                   input(type="hidden" name="_id" value=n._id)
+                  input(type="hidden" name="name" value=n.firstName)
                   label(style="font-size:75%")= n.lastName
                 div
-                  label#status(style="font-size:75%")= n.academicStatus
+                  label#status(style="font-size:75%" name="acad")= n.academicStatus
                   - count = count + 1;
         script(type='text/javascript').
+          
+          var wasSorted = false; //Checks whether the two sorting buttons have been tapped
           
           //This function is triggered when the students button is clicked
           //and sorts the list so only studens are visible
           function sortByStudents() {
-            table = document.getElementById("myTable");
-            tr = document.getElementsByTagName("tr");
-            
-            for (var i = 0; i < tr.length; ++i) {
-              th = tr[i].getElementsByTagName("th")[0];
-              txtValue = th.textContent || th.innerText;
+            //If the list has been already sorted reset it so it displays properly
+            if (wasSorted)
+              resetList();
+            wasSorted = true;
+            var div = document.querySelectorAll(".myDiv");
+            var ac = document.getElementsByName("acad");
+              
+            for (var i = 0; i < div.length; ++i) {
+              txtValue = ac[i].textContent || ac[i].innerText;
               if (txtValue.includes("professor"))
-                tr[i].style.display = "none";
+                div[i].style.display = "none";
             }
           }
           
           //This function is triggered when the professors button is clicked
           //and sorts the list so only professors are visible
           function sortByProfessors() {
-            table = document.getElementById("myTable");
-            tr = document.getElementsByTagName("tr");
-            
-            for (var i = 0; i < tr.length; ++i) {
-              th = tr[i].getElementsByTagName("th")[0];
-              txtValue = th.textContent || th.innerText;
+            //If the list has been already sorted reset it so it displays properly
+            if (wasSorted)
+              resetList();
+            wasSorted = true;
+            var div = document.querySelectorAll(".myDiv");
+            var ac = document.getElementsByName("acad");
+              
+            for (var i = 0; i < div.length; ++i) {
+              txtValue = ac[i].textContent || ac[i].innerText;
               if (txtValue.includes("student"))
-                tr[i].style.display = "none";
+                div[i].style.display = "none";
             }
           }
+          
+          //Resets the list to the disered sorting
+          function resetList() {
+            var div = document.querySelectorAll(".myDiv");
+            var ac = document.getElementsByName("acad");
+            
+            for (var i = 0; i < div.length; ++i)
+              div[i].style.display = "";
+            
+            wasSorted = false;
+          }
+          
           function submit(count){
             document.getElementById(count).submit();
           }
+          
           function search() {
             // Declare variables
             var input, div, filter, i, txtValue, name;
             input = document.getElementById("fname");
             div = document.querySelectorAll(".myDiv");
             filter = input.value.toUpperCase();
-            name = document.getElementsByName("firstName");
-            console.log(div.length);
-            console.log(filter);
+            name = document.getElementsByName("name");
             for(var i = 0; i < div.length; i++){
               if(name[i].value.toUpperCase().indexOf(filter) > -1){
                 div[i].style.display="";
@@ -97,25 +117,5 @@ html(lang='en', dir='ltr')
                 div[i].style.display="none";
               }
             }
-       
-
-            //console.log(name[0].value);
-            //- div.forEach(function(item){
-            //-   if(item){
-
-
-            //-   }
-            //- })
-
-            //- for (i= 0; i < tr.length;i++) {
-            //-   th = tr[i].getElementsByTagName("th")[0];
-            //-   if(th) {
-                
-            //-     txtValue = th.textContent || th.innerText;
-            //-     if(txtValue.toUpperCase().indexOf(filter) > -1) {
-            //-       tr[i].style.display = "";
-            //-     } else {
-                  
-            //-       tr[i].style.display = "none";
           }
           
