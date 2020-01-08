@@ -124,11 +124,11 @@ html(lang='en', dir='ltr')
             filter = input.value.toUpperCase();
             name = document.getElementsByName("name");
             for(var i = 0; i < div.length; i++){
-              if(name[i].value.toUpperCase().indexOf(filter) > -1){
-                div[i].style.display="";
-              }
-              else{
-                div[i].style.display="none";
+              if (div[i].style.display == "") {
+                if(name[i].value.toUpperCase().indexOf(filter) > -1)
+                  div[i].style.display="";
+                else
+                  div[i].style.display="none";
               }
             }
           }

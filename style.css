@@ -107,7 +107,7 @@ li {
     }
     #personal_info {
         display:flex;
-        margin: 0px 15px;    
+        margin: 0px 15px;
         padding-top: 10px;
     }
     div#personal_info span {
@@ -146,7 +146,7 @@ li {
       border-radius: 3px 2px;
       margin-right: auto;
     }
-    
+
     #orgSkills{
       color: black;
     }
@@ -226,6 +226,7 @@ li {
     .myDiv:hover{
       background-color: rgba(171, 214, 223, 1);
       -radius: 10px;
+      cursor: pointer;
     }
     .itemBox{
       display: flex;
