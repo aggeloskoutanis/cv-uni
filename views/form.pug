@@ -5,7 +5,10 @@ html
     title Add CV
     link(rel='stylesheet', type='text/css', href='semantic/dist/semantic.min.css')
     link(rel='stylesheet', type='text/css', href='style.css')
-    script(src='https://code.jquery.com/jquery-3.1.1.min.js', integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     script(type='text/javascript', src='semantic/dist/semantic.min.js')
     script(type='text/javascript', src='node_modules/semantic-ui-calendar/dist/calendar.min.js')
     link(rel='stylesheet', type='text/css', href='node_modules/semantic-ui-calendar/dist/calendar.min.css')
@@ -52,7 +55,7 @@ html
                 #cal.ui.calendar
                   .ui.input.left.icon
                     i.calendar.icon
-                    input(type='text', name='dob', placeholder='Date')
+                    input(type='text', id="dob", placeholder='Date')
             .ui.form.address.info
               .fields.ai
                 .required.field
@@ -849,12 +852,12 @@ html
                 label Start date
                 .ui.input.left.icon
                   i.calendar.icon
-                  input.ui.calendar(type='date', name='educationStartDate', placeholder='Start')
+                  input(type='text', id="eduStartDate", placeholder='Date')
               .field
                 label End date
                 .ui.input.left.icon
                   i.calendar.icon
-                  input.ui.calendar(type='date', name='educationalEndDate', placeholder='End')
+                  input(type='text', id="eduEndDate", placeholder='Date')
               .field
                 label Degree Title
                 input(type='text', name='degree', placeholder='Degree Title')
@@ -904,22 +907,18 @@ html
               label Communication skills
               #comm_field
                 textarea(name='commSkills', rows='2')
-            b Click to add more communication skills
             .ui.hidden.divider
             #org_skills.field
               label Organisational / managerial skills
               textarea#org_textarea(name='orgSkills', rows='2')
-            b Click to add more organisational / managerial skills
             .ui.hidden.divider
             #comp_skills.field
               label Computer skills
               textarea#comp_textarea(name='compSkills', rows='2')
-            b Click to add more computer skills
             .ui.hidden.divider
             #other_skills.field
               label Other skills
               textarea#other_textarea(name='otherSkills', rows='2')
-            b Click to add more "other skills"
             .ui.hidden.divider
             .field
               label Driving License
@@ -944,22 +943,6 @@ html
           .ui.form.addInfo
             .field
               label Additional information
-              .ui.icon.buttons
-                button.ui.button
-                  i.align.left.icon
-                button.ui.button
-                  i.align.center.icon
-                button.ui.button
-                  i.align.right.icon
-                button.ui.button
-                  i.align.justify.icon
-              .ui.icon.buttons
-                button.ui.button
-                  i.bold.icon
-                button.ui.button
-                  i.underline.icon
-                button.ui.button
-                  i.text.width.icon
               textarea(name='additionalInfo')
             .field
               #hidden_divider.ui.hidden.divider
@@ -985,19 +968,28 @@ html
             i.upload.icon
           .visible.content Submit
     script(type='text/javascript').
-      //Birth date calendar
-      $('#cal').calendar({
-      type: 'date'
-      });
-      //Work dates calendar
-      $('.ui.calendar').each(function(){
-      $(this).calendar();
-      });
-      //$('.ui.selection.dropdown').dropdown();
+     
+      $(function(){
+        $("#dob").datepicker();
+        });
+        $(function(){
+        $("#startWorkDate").datepicker();
+        });
+        $(function(){
+        $("#endWorkDate").datepicker();
+        });
+        $(function(){
+        $("#eduStartDate").datepicker();
+        });
+        $(function(){
+        $("#eduEndDate").datepicker();
+        });
       //Tags
       $('.ui.search.fluid.dropdown').dropdown({
         allowAdditions: true,
       });
+
+      
       $("#work_btn").click(function(){
       $("#work_form").clone().appendTo("#main_work_form");
       $("#work_duties").clone().appendTo("#main_work_form");
@@ -1008,26 +1000,12 @@ html
       });
       $("#lang_btn").click(function(){
       $("#langs").first().clone().appendTo("#lang_field");
+
       $('.select').each(function(){
       $(this).dropdown();
       });
       });
-      $("#comm_btn").click(function(){
-      $("#hidden_divider").clone(true).appendTo("#comm_fields");
-      $("#comm_field").clone(true).appendTo("#comm_fields");
-      });
-      $("#org_btn").click(function(){
-      $("#hidden_divider").clone(true).appendTo("#org_skills");
-      $("#org_textarea").clone(true).appendTo("#org_skills");
-      });
-      $("#comp_btn").click(function(){
-      $("#hidden_divider").clone(true).appendTo("#comp_skills");
-      $("#comp_textarea").clone(true).appendTo("#comp_skills");
-      });
-      $("#other_btn").click(function(){
-      $("#hidden_divider").clone(true).appendTo("#other_skills");
-      $("#other_textarea").clone(true).appendTo("#other_skills");
-      });
+      
       //This function is called upon the submit button in
       //the main form. It checks the form and dictates
       //whether the form should make the POST request or not
