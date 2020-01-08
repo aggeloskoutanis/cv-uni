@@ -49,87 +49,91 @@ html(lang='en', dir='ltr')
                 div
                   label#status(style="font-size:75%" name="acad")= n.academicStatus
                   - count = count + 1;
-        script(type='text/javascript').
+      .ui.hidden.divider
+      div(class="clearButton")
+        button.ui.basic.button(type="button" onclick="resetList()")
+          i.window.close.outline.icon
+          |   Reset
           
-          var wasSorted = false; //Checks whether the two sorting buttons have been tapped
-          var tappedStudents = 0;
-          var tappedProfessors = 0;
+      script(type='text/javascript').
+      
+        var wasSorted = false;
+        
+        //This function is triggered when the students button is clicked
+        //and sorts the list so only studens are visible
+        function sortByStudents() {
+          var div = document.querySelectorAll(".myDiv");
+          var ac = document.getElementsByName("acad");
+          var btn = document.querySelectorAll(".clearButton")[0];
           
-          //This function is triggered when the students button is clicked
-          //and sorts the list so only studens are visible
-          function sortByStudents() {
-            if(++tappedStudents == 2) {
-              resetList();
-              tappedStudents = 0;
-              return;
-            }
-            //If the list has been already sorted reset it so it displays properly
-            if (wasSorted) {
-              resetList();
-              wasSorted = false;
-            }
-            wasSorted = true;
-            var div = document.querySelectorAll(".myDiv");
-            var ac = document.getElementsByName("acad");
-              
-            for (var i = 0; i < div.length; ++i) {
-              txtValue = ac[i].textContent || ac[i].innerText;
-              if (txtValue.includes("professor"))
-                div[i].style.display = "none";
-            }
-          }
-          
-          //This function is triggered when the professors button is clicked
-          //and sorts the list so only professors are visible
-          function sortByProfessors() {
-            if(++tappedProfessors == 2) {
-              resetList();
-              tappedProfessors = 0;
-              return;
-            }
-            //If the list has been already sorted reset it so it displays properly
-            if (wasSorted) {
-              resetList();
-              wasSorted = false;
-            }
-            wasSorted = true;
-            var div = document.querySelectorAll(".myDiv");
-            var ac = document.getElementsByName("acad");
-              
-            for (var i = 0; i < div.length; ++i) {
-              txtValue = ac[i].textContent || ac[i].innerText;
-              if (txtValue.includes("student"))
-                div[i].style.display = "none";
-            }
-          }
-          
-          //Resets the list to the disered sorting
-          function resetList() {
-            var div = document.querySelectorAll(".myDiv");
-            var ac = document.getElementsByName("acad");
+          if (wasSorted)
+            resetList();
             
-            for (var i = 0; i < div.length; ++i)
-              div[i].style.display = "";
+          for (var i = 0; i < div.length; ++i) {
+            txtValue = ac[i].textContent || ac[i].innerText;
+            if (txtValue.includes("professor"))
+              div[i].style.display = "none";
           }
           
-          function submit(count){
-            document.getElementById(count).submit();
+          btn.style.visibility = "visible";
+          wasSorted = true;
+        }
+        
+        //This function is triggered when the professors button is clicked
+        //and sorts the list so only professors are visible
+        function sortByProfessors() {
+          var div = document.querySelectorAll(".myDiv");
+          var ac = document.getElementsByName("acad");
+          var btn = document.querySelectorAll(".clearButton")[0];
+          
+          if (wasSorted)
+            resetList();
+            
+          for (var i = 0; i < div.length; ++i) {
+            txtValue = ac[i].textContent || ac[i].innerText;
+            if (txtValue.includes("student"))
+              div[i].style.display = "none";
           }
           
-          function search() {
-            // Declare variables
-            var input, div, filter, i, txtValue, name;
-            input = document.getElementById("fname");
-            div = document.querySelectorAll(".myDiv");
-            filter = input.value.toUpperCase();
-            name = document.getElementsByName("name");
-            for(var i = 0; i < div.length; i++){
-              if (div[i].style.display == "") {
-                if(name[i].value.toUpperCase().indexOf(filter) > -1)
-                  div[i].style.display="";
-                else
-                  div[i].style.display="none";
-              }
+          btn.style.visibility = "visible";
+          wasSorted = true;
+        }
+        
+        //Resets the list to the disered sorting
+        function resetList() {
+          var div = document.querySelectorAll(".myDiv");
+          var ac = document.getElementsByName("acad");
+          var btn = document.querySelectorAll(".clearButton")[0];
+          var input = document.getElementById("fname");
+          
+          for (var i = 0; i < div.length; ++i)
+            div[i].style.display = "";
+            
+          btn.style.visibility = "hidden";
+          wasSorted = false;
+          input.value = "";
+        }
+        
+        function submit(count){
+          document.getElementById(count).submit();
+        }
+        
+        function search() {
+          var input = document.getElementById("fname");
+          var div = document.querySelectorAll(".myDiv");
+          var filter = input.value.toUpperCase();
+          var name = document.getElementsByName("name");
+          var btn = document.querySelectorAll(".clearButton")[0];
+          
+          btn.style.visibility = "visible";
+          
+          for(var i = 0; i < div.length; i++){
+            if (div[i].style.display == "") {
+              if(name[i].value.toUpperCase().indexOf(filter) > -1)
+                div[i].style.display="";
+              else
+                div[i].style.display="none";
             }
           }
+        }
           

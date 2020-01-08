@@ -232,3 +232,8 @@ li {
       display: flex;
       align-items: center;
     }
+
+    .clearButton {
+      text-align: center;
+      visibility: hidden;
+    }
