@@ -15,10 +15,10 @@ html(lang='en', dir='ltr')
     script(type='text/javascript').
       var t = 5;
       var x = setInterval(function() {
-      console.log(t);
-      document.getElementById("timer").innerHTML = t;
-      if (--t < 0) {
-      clearInterval(x);
-      window.location.replace("index.html");
-      }
+        console.log(t);
+        document.getElementById("timer").innerHTML = t;
+        if (--t < 0) {
+          clearInterval(x);
+          window.location.replace("index.html");
+        }
       }, 1000);

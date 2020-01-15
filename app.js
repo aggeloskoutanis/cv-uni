@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true})); //Encode special chars
 app.use(express.static(__dirname)); //Render the local HTML pages.
 
 //If user inputs http://localhost:3000 redirect him to index.html
-app.get('/', function (request, response) {
+app.get('/index.html', function (request, response) {
   var resultsArr = [];
   mongodb.connect('mongodb+srv://MariosKonidaris:TulSkreyl34kvGUz@cluster0-jwitk.mongodb.net/test?retryWrites=true&w=majority', function (err, client) {
     assert.equal(null, err);
