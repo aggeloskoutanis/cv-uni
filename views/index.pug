@@ -49,6 +49,10 @@ html(lang='en', dir='ltr')
                 div
                   label#status(style="font-size:75%" name="acad")= n.academicStatus
                   - count = count + 1;
+                div
+                  input(type="hidden" name="tags" value=n.tags)
+                  - for(var i = 0; i < 3;i++)
+                    label(style="font-size:75%")=n.tags[i]
       .ui.hidden.divider
       div(class="clearButton")
         button.ui.basic.button(type="button" onclick="resetList()")
@@ -124,12 +128,13 @@ html(lang='en', dir='ltr')
           var filter = input.value.toUpperCase();
           var name = document.getElementsByName("name");
           var btn = document.querySelectorAll(".clearButton")[0];
-          
+          var tags = document.getElementsByName("tags");
+
           btn.style.visibility = "visible";
           
           for(var i = 0; i < div.length; i++){
             if (div[i].style.display == "") {
-              if(name[i].value.toUpperCase().indexOf(filter) > -1)
+              if((name[i].value.toUpperCase().indexOf(filter) > -1) || (tags[i].value.toUpperCase().indexOf(filter) > -1))
                 div[i].style.display="";
               else
                 div[i].style.display="none";
