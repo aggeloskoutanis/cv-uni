@@ -60,6 +60,3 @@ These will initialize the environment and install the packages that the whole pr
 
 * **Aggelos Koutanis** - *Main programmer* - [aggeloskoutanis](https://github.com/aggeloskoutanis)
 * **Marios Konidaris** - *Main programmer* - [MariosKoni](https://github.com/MariosKoni)
-
-### The site
-[cv-uni](https://cv-uni.herokuapp.com/)
